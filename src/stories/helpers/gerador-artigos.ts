@@ -7,6 +7,7 @@ export const geraArtigos = (quantidade: number): ArticleThumbnailProps[] => {
     imagem: faker.image.imageUrl(),
     titulo: faker.lorem.sentence(),
     resumo: faker.lorem.paragraph(),
+    conteudo: faker.lorem.paragraph(),
     dataPublicacao: faker.date.past(),
     tempoLeitura: `${faker.datatype.number({ min: 1, max: 10 })} min`,
     autor: {
