@@ -7,8 +7,8 @@ export const ArticleForm = () => {
     <div className="grid min-h-screen mx-10 ">
       <div>
         <h1 className="text-xl font-semibold">
-          Hello there 👋,&nbsp;
-          <span className="font-normal">please fill in your information to continue</span>
+          Olá👋,&nbsp;
+          <span className="font-normal">por favor complete para continuar</span>
         </h1>
         <form className="mt-6">
           <Input

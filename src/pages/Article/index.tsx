@@ -12,8 +12,6 @@ export const ArticlePage = () => {
 
   useEffect(() => {
     async function loadArticle() {
-      // este article.md precisa ser adicionado, temporariamente ao nosso código. Podemos copiar este conteúdo dentro da nossa pasta /public.
-      // sugiro que você retire este documento de `src/stories/assets/markdown/article.md`
       const response = await fetch("/article.md");
       const article = await response.text();
       setArticle(article);

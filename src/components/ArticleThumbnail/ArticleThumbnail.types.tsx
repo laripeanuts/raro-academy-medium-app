@@ -8,6 +8,7 @@ export type ArticleThumbnailProps = {
   autor: {
     nome: string;
     avatar: string;
+    id: number;
   };
   editavel?: boolean;
 }

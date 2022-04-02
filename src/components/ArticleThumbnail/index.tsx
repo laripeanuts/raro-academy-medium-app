@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { formataData } from "../../helpers/date";
 import { ArticleThumbnailProps } from "./ArticleThumbnail.types";
@@ -9,10 +9,18 @@ export const ArticleThumbnail: React.FC<ArticleThumbnailProps> = ({
   titulo,
   resumo,
   dataPublicacao,
-  tempoLeitura = "7 min",
-  autor,
-  editavel,
+  tempoLeitura = '7 min',
+  autor
 }) => {
+
+const [editavel, setEditavel] = useState(false);
+
+useEffect(() => {
+
+  const usuarioAtual = Number(localStorage.getItem('usuarioId'));
+  setEditavel(autor.id === usuarioAtual);
+}, [autor]);
+
   return (
     <div className="flex flex-col w-2/3 mt-5">
       <header className="flex flex-row gap-3 items-center">
