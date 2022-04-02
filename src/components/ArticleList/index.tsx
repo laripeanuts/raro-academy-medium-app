@@ -6,7 +6,7 @@ export const ArticleList: React.FC<ArticleListProps> = ({
   articles
 }) => {
   return (
-    <div className="h-screen flex flex-col items-center justify-center mx-10 mt-10">
+    <div className="flex flex-col items-center justify-center m-10">
       {
         articles.map(article => (
           <ArticleThumbnail

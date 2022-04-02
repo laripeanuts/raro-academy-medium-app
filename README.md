@@ -62,7 +62,7 @@
 - [ ] Cenário: Login não realizado**
   - Dado que o usuário acesse o sistema de publicação de artigos
   - E que não esteja logado na plataforma
-  Quando o usuário navega para a tela de login
+  - Quando o usuário navega para a tela de login
   - E tenta se autenticar com usuário ou senha incorretos
   - Então o sistema deve apresentar uma mensagem de erro "Usuário ou senha inválidos"
   - E o sistema não redireciona este usuário para a tela de seus artigos
