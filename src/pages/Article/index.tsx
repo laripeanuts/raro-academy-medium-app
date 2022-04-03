@@ -26,7 +26,7 @@ export const ArticlePage = () => {
   });
   const [dataPublicacao] = useState(new Date());
   const { id } = useParams();
-k
+
   useEffect(() => {
     async function loadArticle() {
       const response = await apiClient.get<ArticleThumbnailProps>(`/artigos/${id}`);

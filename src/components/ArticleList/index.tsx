@@ -8,12 +8,12 @@ export const ArticleList: React.FC<ArticleListProps> = ({
   return (
     <div className="flex flex-col items-center justify-center m-10">
       {
-        articles.map(article => (
+        (articles.map(article => (
           <ArticleThumbnail
             key={ article.titulo }
             {...article}
           />
-        ))
+        ))).reverse()
       }
     </div>
   );

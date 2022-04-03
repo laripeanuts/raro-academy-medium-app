@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ArticleForm } from "../../components/ArticleForm";
 import { ArticleThumbnailProps } from "../../components/ArticleThumbnail/ArticleThumbnail.types";
+import { Button } from '../../components/Button';
 
 export const EditFilePage = () => {
   const [artigo, setArtigo] = useState<ArticleThumbnailProps>();

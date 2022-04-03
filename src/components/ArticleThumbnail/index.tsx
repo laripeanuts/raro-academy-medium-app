@@ -34,7 +34,7 @@ export const ArticleThumbnail: React.FC<ArticleThumbnailProps> = ({
           {formataData(dataPublicacao)}
         </div>
       </header>
-      <Link to={`article/${id}`}>
+      <Link to={`/article/${id}`}>
         <div className="grid grid-cols-4 gap-3">
           <div className="col-span-3 flex flex-col">
             <div className="font-bold text-lg pt-3">{titulo}</div>
