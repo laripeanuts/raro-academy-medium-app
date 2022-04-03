@@ -19,11 +19,17 @@ export const EditFilePage = () => {
     setArtigo(response.data);
   }
 
- const handleSubmit = (artigo: ArticleThumbnailProps) => {
+ const handleSubmit = async (artigo: ArticleThumbnailProps) => {
     if (artigo.id) {
-      console.log('=====> devo atualizar o artigo');
-    } else {
-      console.log('=====> devo criar um novo artigo');
+      await apiClient.patch(
+        `/artigos/${artigo.id}`,
+        {...artigo}
+        )
+      } else {
+        await apiClient.post(
+          `/artigos`,
+          {...artigo}
+      )
     }
   }
 
