@@ -54,8 +54,8 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
     <div className="grid min-h-screen mx-10 ">
       <div>
         <h1 className="text-xl font-semibold">
-          Hello there 👋,&nbsp;
-          <span className="font-normal">please fill in your information to continue</span>
+          Oi 👋,&nbsp;
+          <span className="font-normal">faça sua cotribuição, preencha e nos surpreenda!</span>
         </h1>
         <form className="mt-6" onSubmit={handleSubmit}>
 
@@ -69,7 +69,7 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
             required
           />
           <Input
-            placeholder="Breve rewsumo do artigo"
+            placeholder="Breve resumo do artigo"
             type="textarea"
             name="resumo"
             label="Resumo"
