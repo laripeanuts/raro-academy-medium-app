@@ -7,6 +7,7 @@ import { ArticlesPage } from "./pages/Articles";
 import { ArticlePage } from "./pages/Article";
 import { MyArticlesPage } from "./pages/MyArticles";
 import { EditFilePage } from "./pages/EditFile";
+import { RequireAuth } from "./components/RequireAuth";
 
 function App() {
   return (
@@ -17,9 +18,12 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<ArticlesPage />} />
           <Route path="/article/:id" element={<ArticlePage />} />
-          <Route path="/articles/my-articles" element={<MyArticlesPage />} />
-          <Route path="/articles/edit/:id" element={<EditFilePage />} />
-          <Route path="/articles/new" element={<EditFilePage />} />
+
+          <Route element={<RequireAuth />}>
+            <Route path="/articles/my-articles" element={<MyArticlesPage />} />
+            <Route path="/articles/edit/:id" element={<EditFilePage />} />
+            <Route path="/articles/new" element={<EditFilePage />} />
+          </Route>
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />
