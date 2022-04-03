@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { ArticleThumbnailProps } from '../ArticleThumbnail/ArticleThumbnail.types'
+import { useNavigate } from "react-router-dom";
+import apiClient from "../../services/api-client";
+import { ArticleThumbnailProps } from "../ArticleThumbnail/ArticleThumbnail.types";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { RitchTextEditor } from "../RitchTextEditor";
@@ -11,22 +13,23 @@ type ArticleFormProps = {
 
 export const ArticleForm: React.FC<ArticleFormProps> = ({
   article,
-  onSubmit
+  onSubmit,
 }) => {
   const [titulo, setTitulo] = useState("");
   const [resumo, setResumo] = useState("");
   const [imagem, setImagem] = useState("");
   const [conteudo, setConteudo] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (article) {
       setTitulo(article.titulo);
       setResumo(article.resumo);
       setImagem(article.imagem);
-      setConteudo(article.conteudo || '');
+      setConteudo(article.conteudo || "");
     }
   }, [article]);
-  
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (onSubmit) {
@@ -37,9 +40,14 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
         imagem,
         conteudo,
       };
-      onSubmit(articleToSubmit as ArticleThumbnailProps)
+      onSubmit(articleToSubmit as ArticleThumbnailProps);
     }
-  }
+  };
+
+  const handleOnClick = async (artigo: ArticleThumbnailProps) => {
+    await apiClient.delete(`/artigos/${artigo.id}`);
+    navigate(`/articles/my-articles`);
+  };
 
   const transformaImagemEmBase64 = (event: any) => {
     const file = event.target.files[0];
@@ -55,10 +63,11 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
       <div>
         <h1 className="text-xl font-semibold">
           Oi 👋,&nbsp;
-          <span className="font-normal">faça sua cotribuição, preencha e nos surpreenda!</span>
+          <span className="font-normal">
+            faça sua contribuição, preencha e nos surpreenda!
+          </span>
         </h1>
         <form className="mt-6" onSubmit={handleSubmit}>
-
           <Input
             placeholder="Digite aqui o título"
             type="text"
@@ -73,13 +82,13 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
             type="textarea"
             name="resumo"
             label="Resumo"
-            value={ resumo }
+            value={resumo}
             onChange={(e) => setResumo(e.target.value)}
             required
           />
 
           <Input
-            placeholder="Breve rewsumo do artigo"
+            placeholder="Breve resumo do artigo"
             type="file"
             name="image"
             label="Banner"
@@ -90,11 +99,21 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
           <RitchTextEditor
             label="Conteúdo"
             name="conteudo"
-            value={ conteudo }
-            onChange={ setConteudo }
+            value={conteudo}
+            onChange={setConteudo}
           />
 
-          <Button type="submit">Salvar</Button>
+          <div className="items-center justify-center flex-row">
+            <Button type="submit">Salvar</Button>
+            <Button
+              disabled={true}
+              type="button"
+              onClickButton={() => handleOnClick}
+              addStyle="bg-red-800 hover:bg-red-600"
+            >
+              Deletar
+            </Button>
+          </div>
         </form>
       </div>
     </div>
