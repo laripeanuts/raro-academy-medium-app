@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { ArticleList } from "../../components/ArticleList";
 import { ArticleThumbnailProps } from "../../components/ArticleThumbnail/ArticleThumbnail.types";
+import { Message } from "../../components/Message";
 import apiClient from "../../services/api-client";
 
 export const ArticlesPage = () => {
@@ -19,8 +20,16 @@ export const ArticlesPage = () => {
     buscaArtigos();
   }, []);
 
-  return (
-    isLoading ? <div></div> :
+  return isLoading ? (
+    <div>
+      <Message
+        title="Carregando artigos... 😊"
+        message="O que você acha de publicar um artigo?"
+        link="/articles/new"
+        textLink="Vamos lá!"
+      />
+    </div>
+  ) : (
     <div className="my-30">
       <ArticleList articles={articles} />
     </div>
