@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArticleForm } from "../../components/ArticleForm";
 import { ArticleThumbnailProps } from "../../components/ArticleThumbnail/ArticleThumbnail.types";
-import { Button } from '../../components/Button';
 
 export const EditFilePage = () => {
   const [artigo, setArtigo] = useState<ArticleThumbnailProps>();
@@ -17,30 +16,30 @@ export const EditFilePage = () => {
   }, [id]);
 
   async function buscarArtigo() {
-    const token = localStorage.getItem("access_token");
-    const response = await apiClient.get<ArticleThumbnailProps>(`/artigos/${id}`);
+    const response = await apiClient.get<ArticleThumbnailProps>(
+      `/artigos/${id}`
+    );
     setArtigo(response.data);
-  };
+  }
 
   const handleSubmit = async (artigo: ArticleThumbnailProps) => {
     if (artigo.id) {
-      await apiClient.patch(
-        `/artigos/${artigo.id}`,
-        { ...artigo }
-      )
+      await apiClient.patch(`/artigos/${artigo.id}`, { ...artigo });
     } else {
-      await apiClient.post(
-        `/artigos`,
-        { ...artigo }
-        );
-      };
+      await apiClient.post(`/artigos`, { ...artigo });
+    }
+    navigate(`/articles/my-articles`);
+  };
+
+  async function handleOnClick() {
+    await apiClient.delete(`/artigos/${id}`);
     navigate(`/articles/my-articles`);
   };
 
   return (
     <>
       <div className="items-center justify-center m-10">
-        <ArticleForm article={artigo} onSubmit={handleSubmit} />
+        <ArticleForm article={artigo} onSubmit={handleSubmit} onClick={handleOnClick} />
       </div>
     </>
   );

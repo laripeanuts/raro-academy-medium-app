@@ -1,4 +1,3 @@
-/* src/pages/Artigos/index.tsx */
 import { useEffect, useState } from "react";
 import { ArticleList } from "../../components/ArticleList";
 import { ArticleThumbnailProps } from "../../components/ArticleThumbnail/ArticleThumbnail.types";

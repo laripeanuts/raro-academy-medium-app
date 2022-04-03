@@ -8,12 +8,14 @@ import { RitchTextEditor } from "../RitchTextEditor";
 
 type ArticleFormProps = {
   article?: ArticleThumbnailProps;
+  onClick?: () => void;
   onSubmit?: (article: ArticleThumbnailProps) => void;
 };
 
 export const ArticleForm: React.FC<ArticleFormProps> = ({
   article,
   onSubmit,
+  onClick,
 }) => {
   const [titulo, setTitulo] = useState("");
   const [resumo, setResumo] = useState("");
@@ -42,11 +44,6 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
       };
       onSubmit(articleToSubmit as ArticleThumbnailProps);
     }
-  };
-
-  const handleOnClick = async (artigo: ArticleThumbnailProps) => {
-    await apiClient.delete(`/artigos/${artigo.id}`);
-    navigate(`/articles/my-articles`);
   };
 
   const transformaImagemEmBase64 = (event: any) => {
@@ -104,15 +101,22 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
           />
 
           <div className="items-center justify-center flex-row">
-            <Button type="submit">Salvar</Button>
             <Button
-              disabled={true}
-              type="button"
-              onClickButton={() => handleOnClick}
-              addStyle="bg-red-800 hover:bg-red-600"
+              type="submit"
+              className="w-full mt-6 tracking-widest border-b-blue-600 bg-blue-500 py-3 text-white font-bold hover:bg-blue-400 active:translate-y-[0.125rem] active:border-b-blue-400"
             >
-              Deletar
+              Salvar
             </Button>
+            {article && (
+              <Button
+                type="button"
+                onClick={onClick}
+                className="w-full mt-6 tracking-widest border-b-red-600 bg-red-500 py-3 text-white font-bold
+        hover:bg-red-400 active:translate-y-[0.125rem] active:border-b-red-400"
+              >
+                Deletar
+              </Button>
+            )}
           </div>
         </form>
       </div>
