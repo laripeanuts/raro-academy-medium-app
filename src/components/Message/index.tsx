@@ -1,8 +1,8 @@
 type MessageProps = {
   title: string;
-  message: string;
-  link: string;
-  textLink: string;
+  message?: string;
+  link?: string;
+  textLink?: string;
 }
 
 export const Message = ({title, message, link, textLink}: MessageProps) => {

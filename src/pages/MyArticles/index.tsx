@@ -7,13 +7,12 @@ import { Message } from "../../components/Message";
 
 export const MyArticlesPage = () => {
   const [articles, setArticles] = useState<ArticleThumbnailProps[]>([]);
-  const [list, setList] = useState<ArticleThumbnailProps[]>([]);
 
   async function buscaMeusArtigos() {
     const token = localStorage.getItem("access_token");
     const response = await apiClient.get<ArticleThumbnailProps[]>(
       "/artigos/meus-artigos"
-      );
+    );
 
     setArticles(response.data);
   }
@@ -22,7 +21,7 @@ export const MyArticlesPage = () => {
     buscaMeusArtigos();
   }, []);
 
-  if (articles.length === 0) {
+  if  (articles.length === 0) {
     return (
       <Message
         title="Ainda não possui artigo... 😢"
@@ -37,5 +36,5 @@ export const MyArticlesPage = () => {
         <ArticleList articles={articles} />
       </div>
     );
-  }
+  };
 };
