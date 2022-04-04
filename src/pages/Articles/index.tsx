@@ -9,9 +9,7 @@ export const ArticlesPage = () => {
   const [isLoading, SetIsLoading] = useState(true);
 
   async function buscaArtigos() {
-    const response = await apiClient.get<ArticleThumbnailProps[]>(
-      `/artigos`
-    );
+    const response = await apiClient.get<ArticleThumbnailProps[]>(`/artigos`);
     setArticles(response.data);
     SetIsLoading(false);
   }
@@ -21,10 +19,7 @@ export const ArticlesPage = () => {
 
   return isLoading ? (
     <div>
-      <Message
-        title="Carregando artigos... 😊"
-        message="Paciência padawan"
-      />
+      <Message title="Carregando artigos... 😊" message="Paciência padawan" />
     </div>
   ) : (
     <div className="my-30">

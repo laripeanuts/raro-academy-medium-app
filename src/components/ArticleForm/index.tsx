@@ -6,14 +6,16 @@ import { RitchTextEditor } from "../RitchTextEditor";
 
 type ArticleFormProps = {
   article?: ArticleThumbnailProps;
-  onClick?: () => void;
+  onClickDelete?: () => void;
+  onClickGoBack?: () => void;
   onSubmit?: (article: ArticleThumbnailProps) => void;
 };
 
 export const ArticleForm: React.FC<ArticleFormProps> = ({
   article,
   onSubmit,
-  onClick,
+  onClickDelete,
+  onClickGoBack,
 }) => {
   const [titulo, setTitulo] = useState("");
   const [resumo, setResumo] = useState("");
@@ -87,7 +89,7 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
             name="image"
             label="Banner"
             onChange={transformaImagemEmBase64}
-            required
+            required={imagem === "" ? true : false}
           />
 
           <RitchTextEditor
@@ -98,16 +100,25 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
           />
 
           <div className="items-center justify-center flex-row">
-            <Button
-              type="submit"
-              className="w-full mt-6 tracking-widest border-b-blue-600 bg-blue-500 py-3 text-white font-bold hover:bg-blue-400 active:translate-y-[0.125rem] active:border-b-blue-400"
-            >
-              Salvar
-            </Button>
+            <div className="w-full w-100 gap-5 items-center justify-center flex-row">
+              <Button
+                type="button"
+                onClick={onClickGoBack}
+                className="w-1/2 mt-6 tracking-widest border-b-gray-600 bg-gray-500 py-3 text-white font-bold hover:bg-gray-400 active:translate-y-[0.125rem] active:border-b-blue-400"
+              >
+                Voltar
+              </Button>
+              <Button
+                type="submit"
+                className="w-1/2 mt-6 tracking-widest border-b-blue-600 bg-blue-500 py-3 text-white font-bold hover:bg-blue-400 active:translate-y-[0.125rem] active:border-b-blue-400"
+              >
+                Salvar
+              </Button>
+            </div>
             {article && (
               <Button
                 type="button"
-                onClick={onClick}
+                onClick={onClickDelete}
                 className="w-full mt-6 tracking-widest border-b-red-600 bg-red-500 py-3 text-white font-bold
         hover:bg-red-400 active:translate-y-[0.125rem] active:border-b-red-400"
               >

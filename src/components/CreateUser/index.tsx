@@ -4,38 +4,32 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../Button";
 import { Input } from "../Input";
 
-export const Login = () => {
+export const CreateUser = () => {
   const navigate = useNavigate();
 
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
+  const [nome, setNome] = useState("");
 
   const [loading, setLoading] = useState(false);
 
   const [erro, setErro] = useState("");
 
-  async function autenticaUsuario(event: React.FormEvent<HTMLFormElement>) {
+  async function newUser (event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     setErro("");
     setLoading(true);
 
     try {
-      const url = "/auth/login";
-      const response = await apiClient.post(url, { login, senha });
-
-      const { access_token, id } = response.data;
-      if (access_token) {
-        localStorage.setItem("access_token", access_token);
-        localStorage.setItem("id", id);
-        navigate("/my-articles");
+      const url = "/usuarios";
+      const response = await apiClient.post(url, { nome, login, senha });
+      
+      if (nome !== null && login !== null && senha !== null) {
+        navigate("/login");
       }
     } catch (error: any) {
-      if (error.response.data.statusCode === 401) {
-        setErro("Usuário ou senha Inválidos");
-      } else {
-        setErro("Erro ao autenticar usuário. Tente novamente mais tarde.");
-      }
+      setErro("Erro ao criar usuário. Tente novamente mais tarde.");
     }
     setLoading(false);
   }
@@ -52,8 +46,19 @@ export const Login = () => {
             />
           </Link>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={autenticaUsuario}>
+        <form className="mt-8 space-y-6" onSubmit={newUser}>
           <div className="rounded-md shadow-sm -space-y-px">
+            <div className="mt-5">
+              <Input
+                type="text"
+                name="name"
+                label="nome"
+                placeholder="nome"
+                required
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+              />
+          </div>
             <div className="mt-5">
               <Input
                 type="text"
@@ -89,8 +94,9 @@ export const Login = () => {
             <Button
               disabled={loading}
               type="submit"
-              className="w-full mt-6 tracking-widest border-b-blue-600 bg-blue-500 py-3 text-white font-bold hover:bg-blue-400 active:translate-y-[0.125rem] active:border-b-blue-400">
-              {loading ? "Carregando..." : "Entrar"}
+              className="w-full mt-6 tracking-widest border-b-blue-600 bg-blue-500 py-3 text-white font-bold hover:bg-blue-400 active:translate-y-[0.125rem] active:border-b-blue-400"
+            >
+              {loading ? "Carregando..." : "Criar conta"}
             </Button>
           </div>
         </form>

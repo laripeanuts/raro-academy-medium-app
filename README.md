@@ -98,7 +98,7 @@
 >>- Quero ver a lista dos artigos que eu publiquei
 >>- Para que eu possa editar e excluir estes artigos
 
-- [X]**Cenário: Usuário não possui artigos publicados**
+- [X] **Cenário: Usuário não possui artigos publicados**
   - Dado que o usuário autenticado acesse o sistema de publicação de artigos
   - E navegue para a tela de meus artigos
   - Quando o usuário não possui artigos publicados
@@ -111,7 +111,7 @@
   - Então o sistema deve apresentar todos os artigos publicados
   - E o sistema deverá apresentar a opção de editar o artigo
 
-- [ ] **Cenário: Criar um novo artigo**
+- [X] **Cenário: Criar um novo artigo**
   - Dado que o usuário autenticado acesse o sistema de publicação de artigos
   - E acesse a tela de novo artigo
   - Quando o usuário preenche todos os campos do cadastro do artigo

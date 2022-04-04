@@ -25,7 +25,7 @@ export const EditFilePage = () => {
   const handleSubmit = async (artigo: ArticleThumbnailProps) => {
     if (artigo.id) {
       await apiClient.patch(`/artigos/${artigo.id}`, { ...artigo });
-      navigate(`/articles/${artigo.id}`);
+      navigate(`/article/${artigo.id}`);
     } else {
       const newArticle = await apiClient.post(`/artigos`, { ...artigo }
       );
@@ -35,13 +35,17 @@ export const EditFilePage = () => {
 
   async function handleOnClick() {
     await apiClient.delete(`/artigos/${id}`);
-    navigate(`/articles/my-articles`);
+    navigate(`/my-articles`);
   };
 
   return (
     <>
       <div className="items-center justify-center m-10">
-        <ArticleForm article={artigo} onSubmit={handleSubmit} onClick={handleOnClick} />
+        <ArticleForm
+          article={artigo}
+          onSubmit={handleSubmit}
+          onClickDelete={handleOnClick}
+          onClickGoBack={() => navigate(-1)} />
       </div>
     </>
   );

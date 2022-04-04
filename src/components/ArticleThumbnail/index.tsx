@@ -9,17 +9,16 @@ export const ArticleThumbnail: React.FC<ArticleThumbnailProps> = ({
   titulo,
   resumo,
   dataPublicacao,
-  tempoLeitura = '7 min',
-  autor
+  tempoLeitura = "5 min",
+  autor,
 }) => {
+  const [editavel, setEditavel] = useState(false);
 
- const [editavel, setEditavel] = useState(false);
-
- useEffect(() => {
-   const usuarioAtual = Number(localStorage.getItem("id"));
-   setEditavel(autor.id === usuarioAtual);
- }, [autor]);
-
+  useEffect(() => {
+    const usuarioAtual = Number(localStorage.getItem("id"));
+    setEditavel(autor.id === usuarioAtual);
+  }, [autor]);
+  
   return (
     <div className="flex flex-col w-2/3 mt-5">
       <header className="flex flex-row gap-3 items-center">

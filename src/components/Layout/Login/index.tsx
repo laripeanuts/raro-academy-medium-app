@@ -1,8 +1,8 @@
-import apiClient from "../../services/api-client";
+import apiClient from "../../../services/api-client";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "../Button";
-import { Input } from "../Input";
+import { Button } from "../../Button";
+import { Input } from "../../Input";
 
 export const Login = () => {
   const navigate = useNavigate();
