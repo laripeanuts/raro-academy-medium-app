@@ -1,4 +1,5 @@
 export type ArticleThumbnailProps = {
+  id?: number;
   imagem: string;
   titulo: string;
   resumo: string;
@@ -7,6 +8,8 @@ export type ArticleThumbnailProps = {
   autor: {
     nome: string;
     avatar: string;
+    id: number;
   };
   editavel?: boolean;
+  conteudo: string;
 }
