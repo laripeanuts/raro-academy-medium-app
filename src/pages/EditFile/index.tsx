@@ -41,7 +41,11 @@ export const EditFilePage = () => {
   return (
     <>
       <div className="items-center justify-center m-10">
-        <ArticleForm article={artigo} onSubmit={handleSubmit} onClick={handleOnClick} />
+        <ArticleForm
+          article={artigo}
+          onSubmit={handleSubmit}
+          onClickDelete={handleOnClick}
+          onClickGoBack={() => navigate(-1)} />
       </div>
     </>
   );
