@@ -5,5 +5,5 @@ export type ArticleViewProps = {
     avatar: string;
   };
   dataPublicacao: Date;
-  tempoLeitura: string;
+  tempoLeitura?: string;
 }
