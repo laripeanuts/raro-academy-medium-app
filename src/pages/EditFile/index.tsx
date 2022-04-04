@@ -35,7 +35,7 @@ export const EditFilePage = () => {
 
   async function handleOnClick() {
     await apiClient.delete(`/artigos/${id}`);
-    navigate(`/articles/my-articles`);
+    navigate(`/my-articles`);
   };
 
   return (

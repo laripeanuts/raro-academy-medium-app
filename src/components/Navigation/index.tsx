@@ -21,6 +21,7 @@ export const Navigation = () => {
       <>
         <ActivableLink to="/">HOME</ActivableLink>
         <ActivableLink to="/login">LOGIN</ActivableLink>
+        <ActivableLink to="/newUser">NOVA CONTA</ActivableLink>
       </>
     );
   }
@@ -28,7 +29,7 @@ export const Navigation = () => {
   return (
     <>
       <ActivableLink to="/">HOME</ActivableLink>
-      <ActivableLink to="/articles/my-articles">MEUS ARTIGOS</ActivableLink>
+      <ActivableLink to="/my-articles">MEUS ARTIGOS</ActivableLink>
       <ActivableLink to="/articles/new">NOVO ARTIGO</ActivableLink>
       <ActivableLink to="/" type="button" onClick={logout}>
         LOGOUT
