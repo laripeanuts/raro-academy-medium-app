@@ -18,9 +18,7 @@ export const ArticleThumbnail: React.FC<ArticleThumbnailProps> = ({
     const usuarioAtual = Number(localStorage.getItem("id"));
     setEditavel(autor.id === usuarioAtual);
   }, [autor]);
-
-  console.log();
-  console.log(tempoLeitura)
+  
   return (
     <div className="flex flex-col w-2/3 mt-5">
       <header className="flex flex-row gap-3 items-center">
