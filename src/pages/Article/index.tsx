@@ -20,10 +20,12 @@ export const ArticlePage = () => {
       id: 0,
     },
   });
+  
   const [autor, setAutor] = useState({
     nome: article.autor.nome,
     avatar: article.autor.avatar,
   });
+
   const [dataPublicacao] = useState(new Date());
   const { id } = useParams();
 

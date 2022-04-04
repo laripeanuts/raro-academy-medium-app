@@ -23,9 +23,7 @@ export const ArticlesPage = () => {
     <div>
       <Message
         title="Carregando artigos... 😊"
-        message="O que você acha de publicar um artigo?"
-        link="/articles/new"
-        textLink="Vamos lá!"
+        message="Paciência padawan"
       />
     </div>
   ) : (
