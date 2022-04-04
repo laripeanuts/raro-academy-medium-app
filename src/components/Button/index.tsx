@@ -1,5 +1,4 @@
 import React from "react";
-import { ArticleThumbnailProps } from "../ArticleThumbnail/ArticleThumbnail.types";
 
 export type ButtonProps = {
   type: "button" | "submit" | "reset" | undefined;
