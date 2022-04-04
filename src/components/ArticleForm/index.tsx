@@ -87,7 +87,7 @@ export const ArticleForm: React.FC<ArticleFormProps> = ({
             name="image"
             label="Banner"
             onChange={transformaImagemEmBase64}
-            required
+            required={imagem === "" ? true : false}
           />
 
           <RitchTextEditor

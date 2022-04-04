@@ -25,7 +25,7 @@ export const EditFilePage = () => {
   const handleSubmit = async (artigo: ArticleThumbnailProps) => {
     if (artigo.id) {
       await apiClient.patch(`/artigos/${artigo.id}`, { ...artigo });
-      navigate(`/articles/${artigo.id}`);
+      navigate(`/article/${artigo.id}`);
     } else {
       const newArticle = await apiClient.post(`/artigos`, { ...artigo }
       );
