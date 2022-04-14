@@ -73,8 +73,14 @@
     "@storybook/testing-library": "0.0.9",
     "@types/markdown-it": "^12.2.3",
     "autoprefixer": "^10.4.4",
+    "cz-conventional-changelog": "^3.3.0",
     "postcss": "^8.4.12",
     "tailwindcss": "^3.0.23",
     "webpack": "^5.70.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
